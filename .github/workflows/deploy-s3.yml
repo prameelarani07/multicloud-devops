@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-              - name: Check GitHub OIDC claims
+      - name: Check GitHub OIDC claims
         shell: bash
         run: |
           TOKEN=$(curl -sS \
