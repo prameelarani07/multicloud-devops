@@ -1,226 +1,262 @@
-
 # CloudPilot – Multi-Cloud DevOps Automation Platform
 
-CloudPilot is a hands-on Multi-Cloud DevOps project that demonstrates how to build, containerize, automate, and deploy a web application using AWS and Google Cloud Platform (GCP).
+CloudPilot is a hands-on DevOps portfolio project that combines Docker containerization, GitHub Actions CI/CD, and Terraform-based multi-cloud infrastructure automation using Amazon Web Services (AWS) and Google Cloud Platform (GCP).
 
-The project uses Terraform for Infrastructure as Code, Docker for containerization, and GitHub Actions for CI/CD automation.
+The project demonstrates how to build, containerize, publish, deploy, and manage a static web application using modern DevOps tools and practices.
 
-It includes automated Docker image publishing to Docker Hub and static website deployment to Amazon S3.
+> **Project status:** Application development, Docker CI/CD, AWS deployment, GCP deployment, and AWS S3 static website deployment were completed and tested. Cloud infrastructure was subsequently deleted to avoid ongoing charges. Source code, Terraform configurations, workflows, and screenshots are retained for demonstration.
 
-## Project Goals
+---
 
-- Build a responsive web dashboard using HTML, CSS, and JavaScript.
-- Containerize the application using Docker.
+## 1. Project Objectives
+
+- Build a responsive static website using HTML, CSS, and JavaScript.
+- Containerize the application using Docker and NGINX.
 - Automate Docker image builds and publishing using GitHub Actions.
+- Publish Docker images to Docker Hub.
 - Provision AWS and GCP infrastructure using Terraform.
-- Deploy the website to Amazon S3 using GitHub Actions and AWS OIDC authentication.
-- Demonstrate practical multi-cloud DevOps skills.
+- Deploy and validate the application in both cloud environments.
+- Deploy the static website using AWS S3.
+- Practice Infrastructure as Code and CI/CD concepts.
 
+---
 
+## 2. Technology Stack
 
-## Technology Stack
-
-| Category | Technologies |
+| Technology | Purpose |
 |---|---|
-| Frontend | HTML, CSS, JavaScript |
-| Containerization | Docker, Nginx |
-| CI/CD | GitHub Actions |
-| Container Registry | Docker Hub |
-| Infrastructure as Code | Terraform |
-| Cloud Platform 1 | Amazon Web Services (AWS) |
-| Cloud Platform 2 | Google Cloud Platform (GCP) |
-| Static Website Hosting | Amazon S3 |
-| Version Control | Git, GitHub |
-| Development Environment | VS Code, macOS |
+| HTML, CSS, JavaScript | Frontend development |
+| Docker | Application containerization |
+| NGINX | Web server |
+| Docker Hub | Container image registry |
+| Git and GitHub | Version control and source code hosting |
+| GitHub Actions | CI/CD automation |
+| Terraform | Infrastructure as Code |
+| AWS EC2 | Cloud application hosting |
+| AWS S3 | Static website hosting |
+| Google Cloud Compute Engine | Cloud application hosting |
+| Visual Studio Code | Code editing |
+| Terminal | Development and infrastructure commands |
 
+---
 
+## 3. Project Architecture
 
-## Project Architecture
+The project follows this workflow:
 
-CloudPilot uses a multi-cloud architecture with AWS and Google Cloud Platform.
+1. Application source code is maintained in GitHub.
+2. GitHub Actions runs when code is pushed to the `main` branch or a pull request is created.
+3. The workflow checks required project files and builds the Docker image.
+4. On pushes to `main`, the image is published to Docker Hub.
+5. Terraform configurations provision infrastructure in AWS and GCP.
+6. The Docker application is deployed and tested in the cloud environments.
+7. AWS S3 is configured for static website hosting and deployment.
 
-### Application Workflow
+### Architecture Diagram
 
-1. Developer pushes application code to GitHub.
-2. GitHub Actions automatically builds and tests the Docker image.
-3. The Docker image is published to Docker Hub.
-4. Terraform provisions infrastructure on AWS and GCP.
-5. The application runs inside Docker containers on AWS EC2 and GCP Compute Engine.
-6. GitHub Actions deploys the static website files to Amazon S3.
-
-### Deployment Components
-
-- **GitHub:** Stores application source code and Terraform configurations.
-- **GitHub Actions:** Automates Docker image publishing and S3 website deployment.
-- **Docker Hub:** Stores the CloudPilot Docker image.
-- **AWS EC2:** Runs the containerized application.
-- **GCP Compute Engine:** Runs the containerized application.
-- **Amazon S3:** Hosts the static CloudPilot website.
-- **Terraform:** Provisions cloud infrastructure.
-
-
-
-## Run CloudPilot Locally
-
-### Prerequisites
-
-Install the following tools:
-
-- Git
-- Docker Desktop
-- VS Code (optional)
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/prameelarani07/multicloud-devops.git
+```mermaid
+flowchart TD
+    A[Developer] --> B[GitHub Repository]
+    B --> C[GitHub Actions]
+    C --> D[Validate Project Files]
+    D --> E[Build Docker Image]
+    E --> F[Docker Hub]
+    F --> G[AWS EC2 Deployment]
+    F --> H[GCP Compute Engine Deployment]
+    B --> I[Terraform]
+    I --> J[AWS Infrastructure]
+    I --> K[GCP Infrastructure]
+    B --> L[AWS S3 Static Website Deployment]
 ```
 
-### 2. Navigate to the project directory
+*The diagram represents the project workflow and the infrastructure used during testing. The cloud resources are currently deleted.*
 
-```bash
-cd multicloud-devops
-```
+---
 
-### 3. Build the Docker image
+## 4. Docker Implementation
+
+The application is packaged using Docker and served through NGINX.
+
+### Build Docker Image
 
 ```bash
 docker build -t cloudpilot:1.0 .
 ```
 
-### 4. Run the Docker container
+### Run Container
 
 ```bash
-docker run -d --name cloudpilot-container -p 8080:80 cloudpilot:1.0
+docker run -d -p 8080:80 --name cloudpilot-container cloudpilot:1.0
 ```
 
-### 5. Open the application
+### Access Application
 
-Open your browser and visit:
-
+```text
 http://localhost:8080
+```
 
-### 6. Stop the container
+### Stop and Remove Container
 
 ```bash
 docker stop cloudpilot-container
-```
-
-### 7. Remove the container
-
-```bash
 docker rm cloudpilot-container
 ```
 
+---
 
+## 5. CI/CD Pipeline – GitHub Actions
 
-## CI/CD Automation
+The Docker CI/CD pipeline is configured in:
 
-CloudPilot uses GitHub Actions to automate application delivery.
+```text
+.github/workflows/docker-publish.yml
+```
 
-### 1. Docker CI/CD Pipeline
+### Pipeline Workflow
 
-Workflow file: `.github/workflows/docker-publish.yml`
+- Checkout source code.
+- Verify required application files.
+- Set up QEMU and Docker Buildx.
+- Build the Docker image.
+- Authenticate with Docker Hub.
+- Publish multi-platform images.
 
-When code is pushed to the configured branch:
+### Docker Hub Repository
 
-1. GitHub Actions checks out the repository.
-2. Builds the Docker image.
-3. Tests the application.
-4. Builds a multi-platform Docker image.
-5. Pushes the image to Docker Hub.
+[prameelarani0712/cloudpilot](https://hub.docker.com/r/prameelarani0712/cloudpilot)
 
-Docker Hub repository:
+Published image tags:
 
-`prameelarani0712/cloudpilot`
+```text
+prameelarani0712/cloudpilot:latest
+prameelarani0712/cloudpilot:1.0
+```
 
-### 2. AWS S3 Deployment Pipeline
+Supported platforms:
 
-Workflow file: `.github/workflows/deploy-s3.yml`
+- linux/amd64
+- linux/arm64
 
-When website files are updated and pushed to the `main` branch:
+The workflow publishes images when changes are pushed to the `main` branch. Pull requests build the image without publishing it.
 
-1. GitHub Actions checks out the repository.
-2. Authenticates with AWS using OpenID Connect (OIDC).
-3. Uploads `index.html` to Amazon S3.
-4. Synchronizes website assets with the S3 bucket.
+---
 
-AWS authentication uses an IAM role instead of storing long-lived AWS access keys in GitHub Secrets.
+## 6. Multi-Cloud Infrastructure Using Terraform
 
-### Pipeline Status
-
-Both GitHub Actions workflows have been executed successfully.
-
-
-
-## Infrastructure as Code (Terraform)
-
-CloudPilot uses Terraform to provision cloud resources.
+Separate Terraform configurations were created for AWS and GCP.
 
 ### AWS Infrastructure
 
-Configuration directory: `terraform/aws/`
+Location:
 
-Resources created:
+```text
+terraform/aws/
+```
+
+Resources provisioned and tested:
 
 - Amazon EC2 instance
-- Security group for HTTP traffic
+- Security group
 - Docker-based application deployment
-
-AWS region: `ap-south-1`
 
 ### GCP Infrastructure
 
-Configuration directory: `terraform/gcp/`
+Location:
 
-Resources created:
+```text
+terraform/gcp/
+```
+
+Resources provisioned and tested:
 
 - Google Compute Engine virtual machine
-- Firewall rule for HTTP traffic
+- HTTP firewall rule
 - Docker-based application deployment
 
-GCP region: `us-central1`
+### AWS S3 Static Website Hosting
 
-### AWS S3 Website Hosting
+Location:
 
-Configuration directory: `terraform/aws-s3/`
+```text
+terraform/aws-s3/
+```
 
-Resources created:
+Resources configured and tested:
 
-- S3 bucket for static website hosting
-- Static website configuration
-- Public-read bucket policy
-- Website file and asset uploads
+- S3 bucket
+- Static website hosting configuration
+- Website files
+- Bucket policy
+- Public access configuration
 
 ### Terraform Commands
 
-Run these commands from the relevant Terraform configuration directory:
+Initialize Terraform:
 
 ```bash
 terraform init
-terraform fmt
+```
+
+Validate configuration:
+
+```bash
 terraform validate
+```
+
+Preview infrastructure changes:
+
+```bash
 terraform plan
+```
+
+Apply infrastructure:
+
+```bash
 terraform apply
 ```
 
-To remove resources managed by a Terraform configuration:
+Destroy infrastructure:
 
 ```bash
 terraform destroy
 ```
 
-**Note:** Review the Terraform plan and estimated cloud costs before applying changes. Some cloud resources may incur charges even when virtual machines are stopped.
+**Note:** The cloud resources have already been destroyed. These commands are included for documentation; running `terraform apply` again would create new cloud resources and may incur charges.
 
+---
 
+## 7. Project Screenshots
 
-## Project Structure
+### CloudPilot Dashboard
+
+![CloudPilot Dashboard](screenshots/01-cloudpilot-dashboard.png)
+
+### Docker CI/CD Pipeline
+
+![Docker CI/CD Pipeline](screenshots/02-docker-cicd-pipeline.png)
+
+### AWS S3 Deployment
+
+![AWS S3 Deployment](screenshots/03-aws-s3-deployment.png)
+
+### GCP Infrastructure
+
+![GCP Infrastructure](screenshots/04-gcp-infrastructure.png)
+
+These screenshots document the application, pipeline, and cloud deployment work completed during the project.
+
+---
+
+## 8. Project Structure
 
 ```text
 multicloud-devops/
 │
-├── index.html
-├── README.md
+├── .github/
+│   └── workflows/
+│       ├── docker-publish.yml
+│       └── deploy-s3.yml
+│
 ├── assets/
 │   ├── css/
 │   │   └── style.css
@@ -228,90 +264,62 @@ multicloud-devops/
 │   │   └── script.js
 │   └── images/
 │
+├── screenshots/
+│   ├── 01-cloudpilot-dashboard.png
+│   ├── 02-docker-cicd-pipeline.png
+│   ├── 03-aws-s3-deployment.png
+│   └── 04-gcp-infrastructure.png
+│
+├── terraform/
+│   ├── aws/
+│   ├── aws-s3/
+│   └── gcp/
+│
 ├── Dockerfile
-│
-├── .github/
-│   └── workflows/
-│       ├── docker-publish.yml
-│       └── deploy-s3.yml
-│
-└── terraform/
-    ├── aws/
-    ├── gcp/
-    └── aws-s3/
+├── index.html
+├── README.md
+└── .gitignore
 ```
-
-
-
-## Project Status
-
-| Component | Status |
-|---|---|
-| CloudPilot Web Dashboard | Completed |
-| Docker Containerization | Completed |
-| Docker Hub Image Publishing | Completed |
-| GitHub Actions Docker Pipeline | Successful |
-| AWS EC2 Deployment | Completed |
-| GCP Compute Engine Deployment | Completed |
-| AWS S3 Static Website Hosting | Completed |
-| GitHub Actions S3 Deployment | Successful |
-| Terraform Infrastructure | Completed |
-
-### Important Notes
-
-- AWS EC2 and GCP Compute Engine instances were stopped after successful deployment to help control costs.
-- The Amazon S3 static website remains hosted separately.
-- Cloud resources may incur charges even when virtual machines are stopped.
-- Never commit cloud credentials, access keys, passwords, or Terraform state files to GitHub.
-
-## Author
-
-**Prameela Rani**
-
-GitHub: [prameelarani07](https://github.com/prameelarani07)
 
 ---
 
-*CloudPilot – Building and automating multi-cloud infrastructure through DevOps practices.*
+## 9. Project Status
 
+| Component | Status |
+|---|---|
+| Static website development | Completed |
+| Docker containerization | Completed |
+| Docker Hub image publishing | Completed |
+| GitHub Actions CI/CD | Tested |
+| AWS Terraform infrastructure | Deployed, tested and cleaned up |
+| GCP Terraform infrastructure | Deployed, tested and cleaned up |
+| AWS S3 static website | Deployed, tested and cleaned up |
+| Documentation and screenshots | Completed |
 
+### Cloud Resource Cleanup
 
-## Architecture Diagram
+After successful deployment and validation, the CloudPilot cloud resources were deleted to avoid ongoing charges.
 
-```mermaid
-flowchart TD
-    A[Developer] --> B[GitHub Repository]
+- AWS EC2 instance and associated infrastructure: deleted.
+- AWS S3 website bucket and its managed resources: deleted.
+- GCP Compute Engine VM, boot disk and CloudPilot firewall rule: deleted.
 
-    B --> C[GitHub Actions]
-    C --> D[Build and Test Docker Image]
-    D --> E[Docker Hub]
+The default cloud networks and unrelated account resources were not deleted.
 
-    E --> F[AWS EC2]
-    E --> G[GCP Compute Engine]
+The GitHub repository, Docker Hub images, Terraform configuration files, and project screenshots remain available.
 
-    B --> H[GitHub Actions S3 Deployment]
-    H --> I[AWS S3 Static Website]
+---
 
-    J[Terraform] --> K[AWS Infrastructure]
-    J --> L[GCP Infrastructure]
-    J --> M[AWS S3 Infrastructure]
+## 10. Conclusion
 
-    K --> F
-    L --> G
-    M --> I
-```
+CloudPilot provided practical experience in Docker containerization, GitHub Actions CI/CD automation, Terraform-based Infrastructure as Code, and multi-cloud deployment using AWS and GCP.
 
+The project demonstrates the complete workflow from application development and container image publishing to cloud infrastructure provisioning and deployment validation.
 
-## Project Screenshots
+It strengthened practical understanding of DevOps tools and cloud deployment workflows while maintaining cost awareness through infrastructure cleanup after testing.
 
-### 1. CloudPilot Dashboard
-![CloudPilot Dashboard](screenshots/01-cloudpilot-dashboard.png)
+---
 
-### 2. Docker CI/CD Pipeline
-![Docker CI/CD Pipeline](screenshots/02-docker-cicd-pipeline.png)
+**GitHub Repository:** [prameelarani07/multicloud-devops](https://github.com/prameelarani07/multicloud-devops)
 
-### 3. AWS S3 Deployment
-![AWS S3 Deployment](screenshots/03-aws-s3-deployment.png)
-
-### 4. GCP Infrastructure
-![GCP Infrastructure](screenshots/04-gcp-infrastructure.png)
+**Docker Hub:** [prameelarani0712/cloudpilot](https://hub.docker.com/r/prameelarani0712/cloudpilot)
