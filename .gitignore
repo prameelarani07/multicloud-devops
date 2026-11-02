@@ -1,0 +1,13 @@
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+crash.log
+.terraform.tfstate.lock.info
+
+# macOS
+.DS_Store
