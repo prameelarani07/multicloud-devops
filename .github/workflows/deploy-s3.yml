@@ -1,0 +1,38 @@
+name: Deploy CloudPilot to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "assets/**"
+      - ".github/workflows/deploy-s3.yml"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy website to S3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ap-south-1
+
+      - name: Upload homepage to S3
+        run: |
+          aws s3 cp index.html s3://cloudpilot-website-prameelarani07/index.html \
+            --content-type "text/html"
+
+      - name: Upload website assets to S3
+        run: |
+          aws s3 sync assets/ s3://cloudpilot-website-prameelarani07/assets/ --delete
