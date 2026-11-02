@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CloudPilot - Multi-Cloud DevOps Automation Platform">
+    <title>CloudPilot | Multi-Cloud DevOps Platform</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-icon">C</span>
+                <span>CloudPilot</span>
+            </div>
+
+            <p class="nav-heading">WORKSPACE</p>
+
+            <nav>
+                <a href="#overview" class="nav-link active">Overview</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="#workflow" class="nav-link">DevOps Workflow</a>
+                <a href="#infrastructure" class="nav-link">Infrastructure</a>
+                <a href="#deployment" class="nav-link">Deployment</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                Local Development
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="breadcrumb">Workspace / Overview</p>
+                    <h2>Cloud Infrastructure Dashboard</h2>
+                </div>
+                <span class="environment">LOCAL ENVIRONMENT</span>
+            </header>
+
+            <section class="welcome-section" id="overview">
+                <div>
+                    <p class="eyebrow">MULTI-CLOUD DEVOPS PROJECT</p>
+                    <h1>Build. Automate.<br><span>Deploy Anywhere.</span></h1>
+                    <p class="welcome-description">
+                        A practical multi-cloud automation platform demonstrating
+                        infrastructure provisioning, containerization and CI/CD
+                        using AWS, Google Cloud and modern DevOps tools.
+                    </p>
+                    <a href="#architecture" class="primary-button">
+                        Explore Architecture →
+                    </a>
+                </div>
+
+                <div class="cloud-visual">
+                    <div class="cloud-symbol">☁</div>
+                    <div class="cloud-label">MULTI-CLOUD</div>
+                    <div class="cloud-caption">One workflow. Multiple environments.</div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">PROJECT SNAPSHOT</p>
+                        <h2>Technology Stack</h2>
+                    </div>
+                    <span class="section-note">Core technologies</span>
+                </div>
+
+                <div class="technology-grid">
+                    <article class="tech-card">
+                        <span class="tech-icon">☁</span>
+                        <h3>Amazon Web Services</h3>
+                        <p>Cloud infrastructure and static website hosting.</p>
+                        <span class="tech-tag">AWS</span>
+                    </article>
+
+                    <article class="tech-card">
+                        <span class="tech-icon">◈</span>
+                        <h3>Google Cloud</h3>
+                        <p>Second cloud environment for multi-cloud deployment.</p>
+                        <span class="tech-tag">GCP</span>
+                    </article>
+
+                    <article class="tech-card">
+                        <span class="tech-icon">⌘</span>
+                        <h3>Terraform</h3>
+                        <p>Infrastructure provisioning through reusable code.</p>
+                        <span class="tech-tag">IaC</span>
+                    </article>
+
+                    <article class="tech-card">
+                        <span class="tech-icon">▣</span>
+                        <h3>Docker</h3>
+                        <p>Package the application into portable containers.</p>
+                        <span class="tech-tag">CONTAINERS</span>
+                    </article>
+
+                    <article class="tech-card">
+                        <span class="tech-icon">⟳</span>
+                        <h3>GitHub Actions</h3>
+                        <p>Automate testing and image publishing workflows.</p>
+                        <span class="tech-tag">CI/CD</span>
+                    </article>
+
+                    <article class="tech-card">
+                        <span class="tech-icon">◉</span>
+                        <h3>Amazon S3</h3>
+                        <p>Host the static website and its application files.</p>
+                        <span class="tech-tag">STORAGE</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-block" id="architecture">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">SYSTEM DESIGN</p>
+                        <h2>Project Architecture</h2>
+                    </div>
+                </div>
+
+                <div class="architecture-panel">
+                    <div class="architecture-node">GitHub Repository</div>
+                    <div class="architecture-arrow">↓</div>
+                    <div class="architecture-node highlight-node">GitHub Actions — CI/CD</div>
+                    <div class="architecture-arrow">↓</div>
+                    <div class="architecture-node">Docker Build & Docker Hub</div>
+                    <div class="architecture-arrow">↓</div>
+                    <div class="architecture-clouds">
+                        <div class="architecture-node cloud-node">AWS</div>
+                        <div class="architecture-node cloud-node">Google Cloud</div>
+                    </div>
+                    <p class="architecture-caption">
+                        Terraform provisions the cloud infrastructure.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section-block" id="workflow">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">AUTOMATION</p>
+                        <h2>DevOps Workflow</h2>
+                    </div>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-step">
+                        <span>01</span>
+                        <h3>Code</h3>
+                        <p>Develop and push changes to GitHub.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span>02</span>
+                        <h3>Test</h3>
+                        <p>Run automated checks through GitHub Actions.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span>03</span>
+                        <h3>Build</h3>
+                        <p>Create a Docker image of the application.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span>04</span>
+                        <h3>Publish</h3>
+                        <p>Push the image to Docker Hub.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span>05</span>
+                        <h3>Deploy</h3>
+                        <p>Run the application in cloud environments.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block" id="infrastructure">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">INFRASTRUCTURE AS CODE</p>
+                        <h2>Terraform Management</h2>
+                    </div>
+                </div>
+                <div class="info-panel">
+                    <h3>Automated Infrastructure Provisioning</h3>
+                    <p>
+                        Terraform will manage the infrastructure configuration
+                        for AWS and Google Cloud. The resources will be planned
+                        and reviewed before deployment.
+                    </p>
+                    <span class="pending-label">Implementation pending</span>
+                </div>
+            </section>
+
+            <section class="section-block" id="deployment">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">CLOUD DELIVERY</p>
+                        <h2>Deployment Environments</h2>
+                    </div>
+                </div>
+                <div class="deployment-grid">
+                    <div class="info-panel">
+                        <h3>Amazon Web Services</h3>
+                        <p>Infrastructure and S3 static website deployment.</p>
+                        <span class="pending-label">Not deployed yet</span>
+                    </div>
+                    <div class="info-panel">
+                        <h3>Google Cloud Platform</h3>
+                        <p>Infrastructure and application deployment.</p>
+                        <span class="pending-label">Not deployed yet</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p>CloudPilot © 2026 | Multi-Cloud DevOps Automation Project</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

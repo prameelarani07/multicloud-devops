@@ -1,0 +1,548 @@
+
+/* =====================================
+   CLOUDPILOT - MAIN STYLESHEET
+===================================== */
+
+:root {
+    --background: #0b1120;
+    --sidebar: #101a2d;
+    --surface: #151f32;
+    --surface-light: #1b2940;
+    --border: #26354d;
+    --text: #f1f5f9;
+    --muted: #9aa9bd;
+    --orange: #f59e0b;
+    --blue: #38bdf8;
+    --green: #34d399;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 245px;
+    min-width: 245px;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 750;
+    margin-bottom: 55px;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: var(--orange);
+    color: #111827;
+    border-radius: 11px;
+    font-weight: 900;
+}
+
+.nav-heading {
+    color: #718198;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.nav-link {
+    padding: 12px 14px;
+    color: var(--muted);
+    font-size: 14px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: white;
+    background: #22334d;
+}
+
+.nav-link.active {
+    border-left: 3px solid var(--orange);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 13px 10px;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.status-dot {
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    width: calc(100% - 245px);
+    margin-left: 245px;
+    padding: 32px 45px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.breadcrumb {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.topbar h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.environment {
+    color: var(--green);
+    background: #12352f;
+    border: 1px solid #236451;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* WELCOME SECTION */
+
+.welcome-section {
+    min-height: 310px;
+    padding: 42px;
+    border: 1px solid #31415c;
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 85% 40%, #24456b 0%, transparent 35%),
+        linear-gradient(120deg, #17263d, #111b2e);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    overflow: hidden;
+}
+
+.eyebrow {
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.welcome-section h1 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.15;
+    margin-bottom: 17px;
+}
+
+.welcome-section h1 span {
+    color: var(--blue);
+}
+
+.welcome-description {
+    max-width: 570px;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.primary-button {
+    display: inline-block;
+    background: var(--orange);
+    color: #111827;
+    padding: 11px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.primary-button:hover {
+    background: #fbbf24;
+    transform: translateY(-2px);
+}
+
+.cloud-visual {
+    min-width: 230px;
+    text-align: center;
+}
+
+.cloud-symbol {
+    font-size: 105px;
+    color: var(--blue);
+    line-height: 1.3;
+    text-shadow: 0 0 40px #38bdf866;
+}
+
+.cloud-label {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.cloud-caption {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+/* SECTION HEADINGS */
+
+.section-block {
+    margin-top: 48px;
+    scroll-margin-top: 25px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    font-size: 22px;
+}
+
+.section-note {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* TECHNOLOGY CARDS */
+
+.technology-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.tech-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    transition: 0.25s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--blue);
+    background: var(--surface-light);
+}
+
+.tech-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #233a55;
+    color: var(--blue);
+    font-size: 21px;
+    margin-bottom: 14px;
+}
+
+.tech-card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.tech-card p {
+    color: var(--muted);
+    font-size: 12px;
+    min-height: 42px;
+}
+
+.tech-tag {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--orange);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* ARCHITECTURE */
+
+.architecture-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+.architecture-node {
+    display: inline-block;
+    min-width: 220px;
+    padding: 13px 20px;
+    border: 1px solid #40516c;
+    background: #1d2b41;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.highlight-node {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.architecture-arrow {
+    color: var(--blue);
+    font-size: 22px;
+    margin: 7px;
+}
+
+.architecture-clouds {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.cloud-node {
+    min-width: 150px;
+    border-color: var(--blue);
+}
+
+.architecture-caption {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+/* WORKFLOW */
+
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.workflow-step {
+    padding: 19px 15px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.workflow-step span {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.workflow-step h3 {
+    margin: 12px 0 6px;
+    font-size: 14px;
+}
+
+.workflow-step p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* INFORMATION PANELS */
+
+.info-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.info-panel h3 {
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.info-panel p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.pending-label {
+    display: inline-block;
+    color: var(--orange);
+    background: #3a2c16;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+}
+
+.deployment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    margin-top: 55px;
+    padding: 23px 0;
+    color: #718198;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1050px) {
+    .main-content {
+        padding: 28px;
+    }
+
+    .technology-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workflow-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        padding: 18px;
+    }
+
+    .app-container {
+        flex-direction: column;
+    }
+
+    .brand {
+        margin-bottom: 18px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .nav-heading,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .nav-link {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .welcome-section {
+        padding: 25px;
+    }
+
+    .cloud-visual {
+        display: none;
+    }
+
+    .technology-grid,
+    .deployment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .architecture-clouds {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .architecture-node {
+        min-width: 0;
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 400px) {
+    .workflow-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section h1 {
+        font-size: 31px;
+    }
+}
