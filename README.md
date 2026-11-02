@@ -273,3 +273,31 @@ GitHub: [prameelarani07](https://github.com/prameelarani07)
 ---
 
 *CloudPilot – Building and automating multi-cloud infrastructure through DevOps practices.*
+
+
+
+## Architecture Diagram
+
+```mermaid
+flowchart TD
+    A[Developer] --> B[GitHub Repository]
+
+    B --> C[GitHub Actions]
+    C --> D[Build and Test Docker Image]
+    D --> E[Docker Hub]
+
+    E --> F[AWS EC2]
+    E --> G[GCP Compute Engine]
+
+    B --> H[GitHub Actions S3 Deployment]
+    H --> I[AWS S3 Static Website]
+
+    J[Terraform] --> K[AWS Infrastructure]
+    J --> L[GCP Infrastructure]
+    J --> M[AWS S3 Infrastructure]
+
+    K --> F
+    L --> G
+    M --> I
+```
+
