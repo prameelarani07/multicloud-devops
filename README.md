@@ -301,3 +301,17 @@ flowchart TD
     M --> I
 ```
 
+
+## Project Screenshots
+
+### 1. CloudPilot Dashboard
+![CloudPilot Dashboard](screenshots/01-cloudpilot-dashboard.png)
+
+### 2. Docker CI/CD Pipeline
+![Docker CI/CD Pipeline](screenshots/02-docker-cicd-pipeline.png)
+
+### 3. AWS S3 Deployment
+![AWS S3 Deployment](screenshots/03-aws-s3-deployment.png)
+
+### 4. GCP Infrastructure
+![GCP Infrastructure](screenshots/04-gcp-infrastructure.png)
